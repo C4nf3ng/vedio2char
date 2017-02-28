@@ -9,7 +9,7 @@ def video_to_frame(videofile):
         print('frame %d' % frame_count)
         ret, frame = video_cap.read()
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        cv2.imwrite("frame%d.png" % frame_count, frame)
+        cv2.imwrite("frame%d.png" % frame_count, gray)
         frame_count += 1
     return frame_count
 
