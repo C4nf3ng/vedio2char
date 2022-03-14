@@ -22,17 +22,16 @@ def resize_frame(img):
 def frame_to_char(frame_num):
     gray_char=['@','#','$','%','&','?','*','o','/','{','[','(',
                '|','!','^','~','-','_',':',';',',','.','`',' ']
-    text = open("text1.txt", "w")
-    for i in range(frame_num):
-        frame = resize_frame('frame%d.png' % i)
-        for y in range(size[1]):
-            for x in range(size[0]):
-                gray = frame.getpixel((x,y))
-                char = gray_char[int(gray/(255/(len(gray_char)-1)))]
-                text.write(char)
-            text.write("\n")
-        print("writing frame %d"%i)
-    text.close()
+    with open("text1.txt", "w") as text:
+        for i in range(frame_num):
+            frame = resize_frame('frame%d.png' % i)
+            for y in range(size[1]):
+                for x in range(size[0]):
+                    gray = frame.getpixel((x,y))
+                    char = gray_char[int(gray/(255/(len(gray_char)-1)))]
+                    text.write(char)
+                text.write("\n")
+            print("writing frame %d"%i)
     print('Done!')
 
 if __name__ == '__main__':
